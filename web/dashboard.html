@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MediSync Lite - Dashboard</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <h2>MediSync Lite - Clinic Management System</h2>
+    <div class="nav">
+        <a href="/">Dashboard</a>
+        <a href="/patients">Patients</a>
+        <a href="/doctors">Doctors</a>
+        <a href="/bills">Bills</a>
+        <a href="/concepts">Concepts</a>
+    </div>
+
+    {{alert}}
+
+    <h3>Clinic Summary</h3>
+    <table style="width: auto;">
+        <tr>
+            <th>Metric</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>Registered Patients (Vector size / capacity)</td>
+            <td>{{totalPatients}} / {{patientCapacity}}</td>
+        </tr>
+        <tr>
+            <td>Active Doctors</td>
+            <td>{{totalDoctors}}</td>
+        </tr>
+        <tr>
+            <td>Total Appointments</td>
+            <td>{{totalAppointments}}</td>
+        </tr>
+        <tr>
+            <td>Waiting List Patients</td>
+            <td>{{waitingCount}}</td>
+        </tr>
+        <tr>
+            <td>Pending Bills</td>
+            <td><span class="status-pending">{{pendingBills}}</span></td>
+        </tr>
+        <tr>
+            <td>Paid Bills</td>
+            <td><span class="status-paid">{{paidBills}}</span></td>
+        </tr>
+        <tr>
+            <td>Cancelled Bills</td>
+            <td><span class="status-cancelled">{{cancelledBills}}</span></td>
+        </tr>
+    </table>
+    <div class="concept-tag">Uses: Practical 2 (Vector size &amp; capacity, int[] bill status counts) and Practical 4 (Reportable interface)</div>
+
+    <h3>Doctor Time Slots Overview</h3>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Doctor Name</th>
+            <th>Specialization</th>
+            <th>Free Slots</th>
+            <th>Schedule (6 Slots per Day)</th>
+        </tr>
+        {{doctorSlotsRows}}
+    </table>
+    <div class="concept-tag">Uses: Practical 2 (boolean[] booked, String[] slotTimes), Practical 6 (final static SLOTS_PER_DOCTOR)</div>
+
+    <h3>Emergency &amp; Standard Waiting List</h3>
+    <table>
+        <tr>
+            <th>Position</th>
+            <th>Patient ID</th>
+            <th>Patient Name</th>
+            <th>Phone</th>
+        </tr>
+        {{waitingRows}}
+    </table>
+    <div class="concept-tag">Uses: Practical 2 (Vector insertElementAt for emergency, add for regular), Practical 8 (WaitlistTask background thread)</div>
+
+    <div class="footer">
+        Demo project - fake data only<br>
+        Developed by: Sanskar Shinde (202401103145), Sarvesh Ghodke (202401103158), Aamer Sayed (202401103150), Rohan Tarke (202401103149)
+    </div>
+</body>
+</html>

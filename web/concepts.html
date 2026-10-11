@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MediSync Lite - Lab Concepts Mapping</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <h2>MediSync Lite - Clinic Management System</h2>
+    <div class="nav">
+        <a href="/">Dashboard</a>
+        <a href="/patients">Patients</a>
+        <a href="/doctors">Doctors</a>
+        <a href="/bills">Bills</a>
+        <a href="/concepts">Concepts</a>
+    </div>
+
+    <h3>OOP Lab Practicals Mapping (Practical 1 to 10)</h3>
+    <table>
+        <tr>
+            <th>Practical No.</th>
+            <th>Concept</th>
+            <th>Class and Method where Used</th>
+        </tr>
+        <tr>
+            <td>Practical 1</td>
+            <td>Syntax and Control Flow: if-else, switch-case, loops, type casting, main entry</td>
+            <td>
+                <code>Main.main()</code> (entry point), <code>ClinicService.getBillStatusCounts()</code> (switch-case on status), <code>Person.setAge()</code> (if-else validation), <code>Bill.calculateTotal()</code> (type casting (double))
+            </td>
+        </tr>
+        <tr>
+            <td>Practical 2</td>
+            <td>Arrays and Vector Collections: 1D arrays, Vector methods (add, remove, insertElementAt, size, capacity)</td>
+            <td>
+                <code>Doctor.booked</code> (boolean[] of 6 slots), <code>Doctor.slotTimes</code> (String[] array), <code>ClinicService.getBillStatusCounts()</code> (int[3] array), <code>ClinicService.patients</code> and <code>waitingList</code> (Vector operations)
+            </td>
+        </tr>
+        <tr>
+            <td>Practical 3</td>
+            <td>Classes, Objects, Inheritance and Constructors: default, parameterized, abstract base class</td>
+            <td>
+                <code>Person</code> (abstract base), <code>Patient extends Person</code>, <code>Doctor extends Person</code>, <code>MedicalRecord</code>, <code>Appointment</code>, <code>Bill</code>
+            </td>
+        </tr>
+        <tr>
+            <td>Practical 4</td>
+            <td>Interfaces, Method Overloading and Method Overriding: multiple interface implementation, encapsulation</td>
+            <td>
+                Interfaces <code>Bookable</code>, <code>Billable</code>, <code>Reportable</code>; <code>Doctor implements Bookable, Reportable</code>; Overriding <code>getRole()</code>; Overloaded <code>addPatient(...)</code> and <code>bookSlot(...)</code>; Private fields with validated getters/setters
+            </td>
+        </tr>
+        <tr>
+            <td>Practical 5</td>
+            <td>Java Package Organization and Import Directives</td>
+            <td>
+                Packages: <code>medisync.model</code>, <code>medisync.exception</code>, <code>medisync.service</code>, <code>medisync.db</code>, <code>medisync.web</code>
+            </td>
+        </tr>
+        <tr>
+            <td>Practical 6</td>
+            <td>Keywords: this, super, static, final and Nested Classes</td>
+            <td>
+                <code>Person()</code> (this() chaining), <code>Patient()</code> (super() call), <code>Bill.Builder</code> (nested static class returning this), <code>Patient.counter</code> and <code>Bill.counter</code> (static), <code>Doctor.SLOTS_PER_DOCTOR</code> (final constant), <code>Person.getDisplayName()</code> (final method)
+            </td>
+        </tr>
+        <tr>
+            <td>Practical 7</td>
+            <td>Exception Handling: custom checked exceptions, throw, throws, try-catch-finally</td>
+            <td>
+                <code>PatientNotFoundException</code>, <code>SlotNotAvailableException</code>, <code>InvalidPatientException</code>, <code>InvalidBillException</code>; <code>ClinicDao</code> (try-catch-finally resource closing)
+            </td>
+        </tr>
+        <tr>
+            <td>Practical 8</td>
+            <td>Multithreading &amp; Synchronization: Thread class, Runnable interface, synchronized methods/blocks, sleep, join</td>
+            <td>
+                <code>BookingThread extends Thread</code>, <code>WaitlistTask implements Runnable</code> (daemon thread), <code>Doctor.bookSlot()</code> (synchronized method), <code>RushBookingHandler</code> (8 threads with join())
+            </td>
+        </tr>
+        <tr>
+            <td>Practical 9</td>
+            <td>String Handling: core String class methods</td>
+            <td>
+                <code>Patient.validateId()</code> (startsWith, split, length, substring), <code>Person.getDisplayName()</code> (charAt, toUpperCase, substring, toLowerCase), <code>ClinicService.searchPatients()</code> (toLowerCase, contains), <code>WebServer</code> (trim, indexOf, equalsIgnoreCase, concat)
+            </td>
+        </tr>
+        <tr>
+            <td>Practical 10</td>
+            <td>Database Connectivity (JDBC): PreparedStatement, ResultSet, CRUD operations</td>
+            <td>
+                <code>ClinicDao</code>: <code>savePatient()</code>, <code>deletePatient()</code>, <code>loadPatients()</code>, <code>loadDoctors()</code>, <code>saveAppointment()</code>, <code>saveRecord()</code>, <code>saveBill()</code>, <code>getBillsByStatus()</code>
+            </td>
+        </tr>
+    </table>
+
+    <h3>Project Team Members</h3>
+    <table style="width: auto;">
+        <tr>
+            <th>Sr. No.</th>
+            <th>Student Name</th>
+            <th>PRN</th>
+            <th>Role / Contribution</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Sanskar Shinde</td>
+            <td>202401103145</td>
+            <td>Multithreading, Concurrency &amp; Waitlist Daemon (P8)</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Sarvesh Ghodke</td>
+            <td>202401103158</td>
+            <td>OOP Architecture, Interfaces &amp; Exceptions (P3, P4, P7)</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Aamer Sayed</td>
+            <td>202401103150</td>
+            <td>JDBC Database Connectivity &amp; SQL Schemas (P10)</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>Rohan Tarke</td>
+            <td>202401103149</td>
+            <td>HTTP WebServer, String Logic &amp; UI Integration (P1, P5, P6, P9)</td>
+        </tr>
+    </table>
+
+    <div class="footer">
+        Demo project - fake data only<br>
+        Developed by: Sanskar Shinde (202401103145), Sarvesh Ghodke (202401103158), Aamer Sayed (202401103150), Rohan Tarke (202401103149)
+    </div>
+</body>
+</html>

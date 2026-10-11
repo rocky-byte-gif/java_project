@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MediSync Lite - Patient Details</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <h2>MediSync Lite - Clinic Management System</h2>
+    <div class="nav">
+        <a href="/">Dashboard</a>
+        <a href="/patients">Patients</a>
+        <a href="/doctors">Doctors</a>
+        <a href="/bills">Bills</a>
+        <a href="/concepts">Concepts</a>
+    </div>
+
+    {{alert}}
+
+    <p><a href="/patients">&larr; Back to Patients Directory</a></p>
+
+    <h3>Patient Information: {{patientId}}</h3>
+    <table style="width: auto;">
+        <tr><th>Field</th><th>Value</th></tr>
+        <tr><td>Patient ID</td><td><b>{{patientId}}</b></td></tr>
+        <tr><td>Name</td><td>{{patientName}}</td></tr>
+        <tr><td>Age</td><td>{{patientAge}} years</td></tr>
+        <tr><td>Phone</td><td>{{patientPhone}}</td></tr>
+        <tr><td>Blood Group</td><td>{{patientBlood}}</td></tr>
+        <tr><td>Known Allergies</td><td>{{patientAllergies}}</td></tr>
+    </table>
+    <form method="POST" action="/patients/delete?id={{patientId}}" onsubmit="return true;">
+        <button type="submit" style="color: red;">Delete Patient Record</button>
+    </form>
+    <div class="concept-tag">Uses: Practical 3 (Person base class getters), Practical 6 (final getDisplayName()), Practical 10 (JDBC deletePatient)</div>
+
+    <h3>Appointments</h3>
+    <table>
+        <tr>
+            <th>Appointment ID</th>
+            <th>Doctor</th>
+            <th>Slot Time</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+        {{appointmentRows}}
+    </table>
+    <div class="concept-tag">Uses: Practical 8 (cancelAppointment synchronized slot freeing), Practical 10 (updateAppointmentStatus)</div>
+
+    <h3>Medical History &amp; Records</h3>
+    <table>
+        <tr>
+            <th>Record ID</th>
+            <th>Diagnosis</th>
+            <th>Prescription</th>
+            <th>Attending Doctor</th>
+            <th>Date</th>
+        </tr>
+        {{recordRows}}
+    </table>
+
+    <h4>Add New Medical Record</h4>
+    <form method="POST" action="/records/add">
+        <input type="hidden" name="patient_id" value="{{patientId}}">
+        <div class="field">
+            <label>Attending Doctor:</label>
+            <select name="doctor_name">
+                {{doctorOptions}}
+            </select>
+        </div>
+        <div class="field">
+            <label>Diagnosis:</label>
+            <input type="text" name="diagnosis" required placeholder="e.g. Acute Pharyngitis">
+        </div>
+        <div class="field">
+            <label>Prescription:</label>
+            <input type="text" name="prescription" required placeholder="e.g. Amoxicillin 500mg, Throat lozenges">
+        </div>
+        <div class="field">
+            <label>Date (YYYY-MM-DD):</label>
+            <input type="text" name="date_text" value="2026-10-10">
+        </div>
+        <button type="submit">Save Medical Record</button>
+    </form>
+    <div class="concept-tag">Uses: Practical 10 (JDBC saveRecord, getRecords)</div>
+
+    <h3>Billing History</h3>
+    <table>
+        <tr>
+            <th>Bill ID</th>
+            <th>Consultation Fee (Rs)</th>
+            <th>Medicine (Rs)</th>
+            <th>Test Fee (Rs)</th>
+            <th>Total (Rs)</th>
+            <th>Status</th>
+        </tr>
+        {{billRows}}
+    </table>
+    <div class="concept-tag">Uses: Practical 4 (Billable calculateTotal), Practical 6 (Bill.Builder)</div>
+
+    <div class="footer">
+        Demo project - fake data only<br>
+        Developed by: Sanskar Shinde (202401103145), Sarvesh Ghodke (202401103158), Aamer Sayed (202401103150), Rohan Tarke (202401103149)
+    </div>
+</body>
+</html>

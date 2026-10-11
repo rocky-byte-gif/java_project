@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MediSync Lite - Doctors &amp; Booking</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <h2>MediSync Lite - Clinic Management System</h2>
+    <div class="nav">
+        <a href="/">Dashboard</a>
+        <a href="/patients">Patients</a>
+        <a href="/doctors">Doctors</a>
+        <a href="/bills">Bills</a>
+        <a href="/concepts">Concepts</a>
+    </div>
+
+    {{alert}}
+
+    <h3>Doctor Schedule &amp; Slot Availability</h3>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Doctor Name</th>
+            <th>Specialization</th>
+            <th>Availability</th>
+            <th>Daily Schedule (10:00 to 12:30)</th>
+        </tr>
+        {{doctorRows}}
+    </table>
+    <div class="concept-tag">Uses: Practical 2 (boolean[] booked, String[] slotTimes), Practical 4 (Doctor implements Bookable, Reportable)</div>
+
+    <h3>Book An Appointment</h3>
+    <form method="POST" action="/book">
+        <div class="field">
+            <label>Patient ID:</label>
+            <input type="text" name="patient_id" required placeholder="e.g. MS-2026-0001">
+        </div>
+        <div class="field">
+            <label>Select Doctor:</label>
+            <select name="doctor_id">
+                {{doctorOptions}}
+            </select>
+        </div>
+        <div class="field">
+            <label>Emergency Case:</label>
+            <input type="checkbox" name="emergency" value="true">
+            <span style="font-size: 12px; color: #555555;">(Places patient at front of waiting list if doctor slots are full)</span>
+        </div>
+        <button type="submit">Book Slot</button>
+    </form>
+    <div class="concept-tag">Uses: Practical 2 (Vector insertElementAt), Practical 7 (SlotNotAvailableException, PatientNotFoundException), Practical 8 (synchronized doctor.bookSlot)</div>
+
+    <h3>Rush Booking Test (Multithreading Concurrency Simulation)</h3>
+    <p>Launches 8 patient threads simultaneously trying to book the selected doctor to test thread safety and prove no double bookings happen.</p>
+    <form method="POST" action="/rush">
+        <label>Select Doctor for Concurrency Test: </label>
+        <select name="doctor_id">
+            {{doctorOptions}}
+        </select>
+        <button type="submit">Start Rush Booking Test</button>
+    </form>
+    <div class="concept-tag">Uses: Practical 8 (BookingThread extends Thread, Thread.sleep, Thread.join(), synchronized slot allocation)</div>
+
+    <div class="footer">
+        Demo project - fake data only<br>
+        Developed by: Sanskar Shinde (202401103145), Sarvesh Ghodke (202401103158), Aamer Sayed (202401103150), Rohan Tarke (202401103149)
+    </div>
+</body>
+</html>

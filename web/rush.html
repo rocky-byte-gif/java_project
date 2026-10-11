@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MediSync Lite - Rush Booking Test Results</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <h2>MediSync Lite - Clinic Management System</h2>
+    <div class="nav">
+        <a href="/">Dashboard</a>
+        <a href="/patients">Patients</a>
+        <a href="/doctors">Doctors</a>
+        <a href="/bills">Bills</a>
+        <a href="/concepts">Concepts</a>
+    </div>
+
+    <p><a href="/doctors">&larr; Back to Doctors &amp; Booking</a></p>
+
+    <h3>Rush Booking Test Execution Report</h3>
+    <p>Target Doctor: <b>{{doctorName}}</b></p>
+    <p>Executed 8 concurrent patient booking threads. Thread execution log:</p>
+
+    <table>
+        <tr>
+            <th>Thread #</th>
+            <th>Booking Result Line</th>
+        </tr>
+        {{resultRows}}
+    </table>
+
+    <p><b>Verification Check:</b></p>
+    <p>Double bookings found: <span class="status-free">{{doubleBookings}}</span></p>
+
+    <div class="concept-tag">Uses: Practical 8 (BookingThread extends Thread, synchronized bookSlot, Thread.sleep(0-200ms), thread.join() synchronization barrier)</div>
+
+    <div class="footer">
+        Demo project - fake data only<br>
+        Developed by: Sanskar Shinde (202401103145), Sarvesh Ghodke (202401103158), Aamer Sayed (202401103150), Rohan Tarke (202401103149)
+    </div>
+</body>
+</html>

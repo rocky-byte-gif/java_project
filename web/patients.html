@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MediSync Lite - Patients</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <h2>MediSync Lite - Clinic Management System</h2>
+    <div class="nav">
+        <a href="/">Dashboard</a>
+        <a href="/patients">Patients</a>
+        <a href="/doctors">Doctors</a>
+        <a href="/bills">Bills</a>
+        <a href="/concepts">Concepts</a>
+    </div>
+
+    {{alert}}
+
+    <h3>Patient Directory</h3>
+    <form method="GET" action="/patients">
+        <label>Search Patient: </label>
+        <input type="text" name="search" value="{{searchVal}}" placeholder="Search by name or ID">
+        <button type="submit">Search</button>
+        <a href="/patients">Reset</a>
+    </form>
+    <div class="concept-tag">Uses: Practical 9 (String methods: toLowerCase, contains, trim)</div>
+
+    <table>
+        <tr>
+            <th>Patient ID</th>
+            <th>Name (Proper Case)</th>
+            <th>Age</th>
+            <th>Phone</th>
+            <th>Blood Group</th>
+            <th>Role</th>
+            <th>Action</th>
+        </tr>
+        {{patientRows}}
+    </table>
+
+    <h3>Register New Patient</h3>
+    <form method="POST" action="/patients/add">
+        <div class="field">
+            <label>Full Name:</label>
+            <input type="text" name="name" required placeholder="e.g. Ramesh Kumar">
+        </div>
+        <div class="field">
+            <label>Age:</label>
+            <input type="number" name="age" required min="0" max="120" placeholder="e.g. 29">
+        </div>
+        <div class="field">
+            <label>Phone (10 digits):</label>
+            <input type="text" name="phone" required maxlength="10" placeholder="e.g. 9876543210">
+        </div>
+        <div class="field">
+            <label>Blood Group:</label>
+            <select name="blood_group">
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
+            </select>
+        </div>
+        <div class="field">
+            <label>Allergies:</label>
+            <input type="text" name="allergies" placeholder="e.g. None or Dust">
+        </div>
+        <button type="submit">Register Patient</button>
+    </form>
+    <div class="concept-tag">Uses: Practical 1 (if-else validation), Practical 3 (Inheritance &amp; Constructors), Practical 4 (Overloaded addPatient), Practical 6 (super, static counter), Practical 7 (InvalidPatientException), Practical 9 (Phone digit validation, ID generation)</div>
+
+    <div class="footer">
+        Demo project - fake data only<br>
+        Developed by: Sanskar Shinde (202401103145), Sarvesh Ghodke (202401103158), Aamer Sayed (202401103150), Rohan Tarke (202401103149)
+    </div>
+</body>
+</html>

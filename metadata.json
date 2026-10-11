@@ -1,0 +1,6 @@
+{
+  "name": "MediSync Lite - Clinic Management System",
+  "description": "B.Tech CSE College Mini Project - Java Clinic Management System with Multithreading and JDBC",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

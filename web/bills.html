@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MediSync Lite - Billing Management</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <h2>MediSync Lite - Clinic Management System</h2>
+    <div class="nav">
+        <a href="/">Dashboard</a>
+        <a href="/patients">Patients</a>
+        <a href="/doctors">Doctors</a>
+        <a href="/bills">Bills</a>
+        <a href="/concepts">Concepts</a>
+    </div>
+
+    {{alert}}
+
+    <h3>Billing Records</h3>
+    <div>
+        <b>Filter by Status: </b>
+        <a href="/bills">All</a> | 
+        <a href="/bills?status=PENDING">Pending</a> | 
+        <a href="/bills?status=PAID">Paid</a> | 
+        <a href="/bills?status=CANCELLED">Cancelled</a>
+        <span> (Current filter: {{filterStatus}})</span>
+    </div>
+    <div class="concept-tag">Uses: Practical 1 (switch statement on bill status), Practical 10 (JDBC getBillsByStatus)</div>
+
+    <table>
+        <tr>
+            <th>Bill ID</th>
+            <th>Patient ID</th>
+            <th>Consultation Fee (Rs)</th>
+            <th>Medicine Fee (Rs)</th>
+            <th>Test Fee (Rs)</th>
+            <th>Total Amount (Rs)</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+        {{billRows}}
+    </table>
+
+    <h3>Generate New Bill</h3>
+    <form method="POST" action="/bills/add">
+        <div class="field">
+            <label>Patient ID:</label>
+            <input type="text" name="patient_id" required placeholder="e.g. MS-2026-0001">
+        </div>
+        <div class="field">
+            <label>Consultation (Rs):</label>
+            <input type="number" step="0.5" name="consultation" required value="300" min="0">
+        </div>
+        <div class="field">
+            <label>Medicine (Rs):</label>
+            <input type="number" step="0.5" name="medicine" required value="150" min="0">
+        </div>
+        <div class="field">
+            <label>Test Fee (Rs):</label>
+            <input type="number" step="0.5" name="test_fee" required value="0" min="0">
+        </div>
+        <button type="submit">Create Bill</button>
+    </form>
+    <div class="concept-tag">Uses: Practical 1 (Type casting arithmetic), Practical 3 (Bill entity), Practical 4 (Billable interface), Practical 6 (Bill.Builder method chaining), Practical 7 (InvalidBillException)</div>
+
+    <div class="footer">
+        Demo project - fake data only<br>
+        Developed by: Sanskar Shinde (202401103145), Sarvesh Ghodke (202401103158), Aamer Sayed (202401103150), Rohan Tarke (202401103149)
+    </div>
+</body>
+</html>
